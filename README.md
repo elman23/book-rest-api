@@ -34,3 +34,8 @@ The application can be built and run with the Maven wrapper provided in the repo
 ./mvnw clean package
 ./mvnw spring-boot:run
 ```
+
+## Improvements
+
+- Automatically run SQL scripts at database startup.
+- Dockerize Spring application.
