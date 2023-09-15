@@ -11,21 +11,21 @@ import java.util.Optional;
 @Service
 public class BookServiceImpl implements BookService {
 
-    private BookRepository employeeRepository;
+    private BookRepository bookRepository;
 
     @Autowired
     public BookServiceImpl(BookRepository theBookRepository) {
-        employeeRepository = theBookRepository;
+        bookRepository = theBookRepository;
     }
 
     @Override
     public List<Book> findAll() {
-        return employeeRepository.findAll();
+        return bookRepository.findAll();
     }
 
     @Override
     public Book findById(int theId) {
-        Optional<Book> result = employeeRepository.findById(theId);
+        Optional<Book> result = bookRepository.findById(theId);
 
         Book theBook = null;
 
@@ -33,8 +33,7 @@ public class BookServiceImpl implements BookService {
             theBook = result.get();
         }
         else {
-            // we didn't find the employee
-            throw new RuntimeException("Did not find employee id - " + theId);
+            throw new RuntimeException("Did not find book with id - " + theId);
         }
 
         return theBook;
@@ -42,11 +41,11 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book save(Book theBook) {
-        return employeeRepository.save(theBook);
+        return bookRepository.save(theBook);
     }
 
     @Override
     public void deleteById(int theId) {
-        employeeRepository.deleteById(theId);
+        bookRepository.deleteById(theId);
     }
 }

@@ -18,13 +18,10 @@ public class BookRestController {
         bookService = theBookService;
     }
 
-    // expose "/books" and return a list of book
     @GetMapping("/books")
     public List<Book> findAll() {
         return bookService.findAll();
     }
-
-    // add mapping for GET /books/{bookId}
 
     @GetMapping("/books/{bookId}")
     public Book getBook(@PathVariable int bookId) {
@@ -38,13 +35,8 @@ public class BookRestController {
         return theBook;
     }
 
-    // add mapping for POST /books - add new employee
-
     @PostMapping("/books")
     public Book addBook(@RequestBody Book theBook) {
-
-        // also just in case they pass an id in JSON ... set id to 0
-        // this is to force a save of new item ... instead of update
 
         theBook.setId(0);
 
@@ -52,8 +44,6 @@ public class BookRestController {
 
         return dbBook;
     }
-
-    // add mapping for PUT /books - update existing employee
 
     @PutMapping("/books")
     public Book updateBook(@RequestBody Book theBook) {
@@ -63,22 +53,17 @@ public class BookRestController {
         return dbBook;
     }
 
-    // add mapping for DELETE /books/{bookId} - delete employee
-
     @DeleteMapping("/books/{bookId}")
     public String deleteBook(@PathVariable int bookId) {
 
         Book tempBook = bookService.findById(bookId);
 
-        // throw exception if null
-
         if (tempBook == null) {
-            throw new RuntimeException("Book id not found - " + bookId);
+            throw new RuntimeException("Book with id not found - " + bookId);
         }
 
         bookService.deleteById(bookId);
 
-        return "Deleted employee id - " + bookId;
+        return "Deleted book with id - " + bookId;
     }
-
 }
