@@ -29,7 +29,7 @@ public class BookRestController {
         Book theBook = bookService.findById(bookId);
 
         if (theBook == null) {
-            throw new RuntimeException("Book id not found - " + bookId);
+            throw new BookNotFoundException("Book id not found - " + bookId);
         }
 
         return theBook;
@@ -59,7 +59,7 @@ public class BookRestController {
         Book tempBook = bookService.findById(bookId);
 
         if (tempBook == null) {
-            throw new RuntimeException("Book with id not found - " + bookId);
+            throw new BookNotFoundException("Book with id not found - " + bookId);
         }
 
         bookService.deleteById(bookId);
