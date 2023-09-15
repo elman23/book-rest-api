@@ -20,6 +20,6 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` VALUES 
-	(1,'asd','Aasd asdasd','asd asdasd asd asdasd'),
-	(2,'fghh','fgh fghfgh','fgh fghfgh fghfgh fghfghfgh'),
-	(3,'ert','ert ertert ert','ert ertert ertertert ertert');
+	(1,"The Lord of the Rings","J.R.R. Tolkien","A fantasy classic."),
+	(2,"Harry Potter and the Philosophers stone","J.K. Rowling","A young wizard's adventures"),
+	(3,"Swann's way", "Marcel Proust", "One of the masterpieces of literature.");
