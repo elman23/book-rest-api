@@ -2,8 +2,10 @@ package io.github.elman23.bookrestapi.service;
 
 import io.github.elman23.bookrestapi.dao.BookRepository;
 import io.github.elman23.bookrestapi.entity.Book;
+import io.github.elman23.bookrestapi.rest.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,18 +35,20 @@ public class BookServiceImpl implements BookService {
             theBook = result.get();
         }
         else {
-            throw new RuntimeException("Did not find book with id - " + theId);
+            throw new BookNotFoundException("Did not find book with id - " + theId);
         }
 
         return theBook;
     }
 
     @Override
+    @Transactional
     public Book save(Book theBook) {
         return bookRepository.save(theBook);
     }
 
     @Override
+    @Transactional
     public void deleteById(int theId) {
         bookRepository.deleteById(theId);
     }
