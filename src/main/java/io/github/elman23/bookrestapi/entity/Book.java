@@ -1,6 +1,8 @@
 package io.github.elman23.bookrestapi.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="book")
@@ -12,9 +14,13 @@ public class Book {
     @Column(name="id")
     private int id;
 
+    @NotNull(message = "is required")
+    @Size(min=1, message="is required")
     @Column(name="title")
     private String title;
 
+    @NotNull(message = "is required")
+    @Size(min=1, message="is required")
     @Column(name="author")
     private String author;
 

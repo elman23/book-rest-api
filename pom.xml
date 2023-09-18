@@ -59,6 +59,18 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		-->
+
+		<!-- Add dependency for Thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- Add dependency for Validation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -25,7 +25,12 @@ public class BookSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(configurer ->
-                configurer.requestMatchers(HttpMethod.GET, "/api/books").hasRole("READER")
+                configurer
+                        .requestMatchers(HttpMethod.GET, "/").hasRole("LIBRARIAN")
+                        .requestMatchers(HttpMethod.POST, "/processForm").hasRole("LIBRARIAN")
+                        .requestMatchers(HttpMethod.GET, "/").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/processForm").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/books").hasRole("READER")
                         .requestMatchers(HttpMethod.GET, "/api/books/**").hasRole("READER")
                         .requestMatchers(HttpMethod.POST, "/api/books").hasRole("LIBRARIAN")
                         .requestMatchers(HttpMethod.PUT, "/api/books").hasRole("LIBRARIAN")
